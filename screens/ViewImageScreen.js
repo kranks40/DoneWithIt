@@ -1,34 +1,37 @@
 import React from 'react'
-import { View, Image, StyleSheet, SafeAreaView } from 'react-native'
+import { View, Image, StyleSheet} from 'react-native'
 import {MaterialCommunityIcons} from "@expo/vector-icons/";
 import colors from '../config/colors';
+import Screen from '../components/Screen';
 
 
 export default function ViewImageScreen() {
     return (
-
-          <View style={styles.container}>
-            
-            <Image
-                style={styles.image}
-                source={require('../assets/chair.jpg')}></Image>
+         <View style={styles.container}>
 
             <View style={styles.buttonleft}>
-                 <MaterialCommunityIcons name='close' color='black' size={30}/>
-             </View>
-             <View style={styles.buttonright}>
-                 <MaterialCommunityIcons name='trash-can-outline' color='black' size={30}/>
-             </View>
+                <MaterialCommunityIcons name='close' color='black' size={30}/>
+            </View>
+            <View style={styles.buttonright}>
+                <MaterialCommunityIcons name='trash-can-outline' color='black' size={30}/>
+            </View>
 
-             </View>        
+            <Image
+                resizeMode="contain"
+                style={styles.image}
+                source={require('../assets/chair.jpg')}></Image>           
+
+
+        </View>
+
     );
 }
 
 const styles = StyleSheet.create({
-     container: {  
-         backgroundColor: colors.white,      
-         flex: 1,
-     },
+      container: {  
+          backgroundColor: colors.white,      
+          flex: 1,
+      },
 
     buttonleft: {      
         position: "absolute",
@@ -44,7 +47,8 @@ const styles = StyleSheet.create({
     },
 
     image: {
-        width: '100%',
-        height: '100%'
+        // resizeMode: "contain",
+         width: '100%',
+         height: '100%',
     },
 });
