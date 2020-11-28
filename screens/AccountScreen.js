@@ -36,7 +36,7 @@ export default function AccountScreen() {
            image={require('../assets/mosh.jpg')}
            />
            </View>
-           <View style={styles.data}>
+           <View style={styles.container}>
                <FlatList
                data={menuItem}
                keyExtractor={(menuItem) => menuItem.title}
@@ -56,7 +56,7 @@ export default function AccountScreen() {
            </View>
                <ListItem
                title='Log Out' 
-               IconCompound={<Icon name='logout' backgroundColor='#ffe66d'/>
+               IconComponent={<Icon name='logout' backgroundColor='#FFD703'/> //FFD703
             } />
        </Screen>
     );
@@ -64,7 +64,7 @@ export default function AccountScreen() {
 
 const styles = StyleSheet.create({
     container: {
-        marginVertical: 10,
+        marginVertical: 20,
     },
 
     screen: {

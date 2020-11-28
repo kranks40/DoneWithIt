@@ -10,13 +10,16 @@ import ViewImageScreen from './screens/ViewImageScreen';
 import WelcomeScreen from './screens/WelcomeScreen';
 import ListItem from './components/ListItem';
 import AccountScreen from './screens/AccountScreen';
+import ListingsScreen from './screens/ListingsScreen';
         
 
 export default function App() {
  
 
   return (
-    <AccountScreen/>
+
+    <ListingsScreen/>
+    // <AccountScreen/>
 
 
     // <Screen>
