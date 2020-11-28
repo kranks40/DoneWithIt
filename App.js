@@ -11,6 +11,7 @@ import WelcomeScreen from './screens/WelcomeScreen';
 import ListItem from './components/ListItem';
 import AccountScreen from './screens/AccountScreen';
 import ListingsScreen from './screens/ListingsScreen';
+import AppTextInput from './components/AppTextInput';
         
 
 export default function App() {
@@ -18,7 +19,11 @@ export default function App() {
 
   return (
 
-    <ListingsScreen/>
+    <Screen>
+      <AppTextInput placeholder='Username' icon='email'/>
+    </Screen>
+
+    // <ListingsScreen/>
     // <AccountScreen/>
 
 
