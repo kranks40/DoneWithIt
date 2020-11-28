@@ -12,6 +12,10 @@ import ListItem from './components/ListItem';
 import AccountScreen from './screens/AccountScreen';
 import ListingsScreen from './screens/ListingsScreen';
 import AppTextInput from './components/AppTextInput';
+import switchUp from './config/switchUp';
+import { Switch } from 'react-native-gesture-handler';
+import AppText from './components/AppText';
+import AppPicker from './components/AppPicker';
         
 
 export default function App() {
@@ -20,8 +24,10 @@ export default function App() {
   return (
 
     <Screen>
-      <AppTextInput placeholder='Username' icon='email'/>
+      <AppPicker icon='apps' placeholder='category' /> 
+      <AppTextInput icon='email' placeholder='email' />
     </Screen>
+    
 
     // <ListingsScreen/>
     // <AccountScreen/>
