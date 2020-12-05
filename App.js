@@ -16,17 +16,25 @@ import switchUp from './config/switchUp';
 import { Switch } from 'react-native-gesture-handler';
 import AppText from './components/AppText';
 import AppPicker from './components/AppPicker';
+import LoginScreen from './screens/LoginScreen';
+import RegisterScreen from './screens/RegisterScreen';
+import ListingEditScreen from './screens/ListingEditScreen';
         
 
 export default function App() {
  
 
   return (
+    <ListingEditScreen/>
 
-    <Screen>
-      <AppPicker icon='apps' placeholder='category' /> 
-      <AppTextInput icon='email' placeholder='email' />
-    </Screen>
+   // <RegisterScreen />
+
+    //<LoginScreen/>
+
+    //  <Screen>
+    //    <AppPicker icon='apps' placeholder='category' /> 
+    //   <AppTextInput icon='email' placeholder='email' />
+    //  </Screen>
     
 
     // <ListingsScreen/>
@@ -34,7 +42,7 @@ export default function App() {
 
 
     // <Screen>
-    //   <ListItem 
+      //  <ListItem 
     //   title='My title' 
     //   // subTitle='My subtitle'
     //   ImageComponent={<Icon name='email'

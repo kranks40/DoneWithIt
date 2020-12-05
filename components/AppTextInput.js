@@ -1,15 +1,17 @@
 import React from 'react';
-import { View, StyleSheet, TextInput, Platform } from 'react-native';
+import { View, StyleSheet, TextInput } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import colors from '../config/colors';
 import defaultStyles from '../config/styles';
-import switchUp from '../config/switchUp';
 
-const AppTextInput = ({ icon, ...props }) => {
+
+const AppTextInput = ({ name, icon, ...props }) => {
     return (
         <View style={styles.input__container}>
             {icon && <MaterialCommunityIcons name={icon} size={25} color='#115293' />} 
-            <TextInput style={defaultStyles.text} {...props} />
+            <TextInput 
+            placeholderTextColor={colors.medium}
+            style={defaultStyles.text} {...props} />
         </View>
     );
 }
