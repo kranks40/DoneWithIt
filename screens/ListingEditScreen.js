@@ -6,6 +6,7 @@ import * as Yup from 'yup';
 import AppButton from '../components/AppButton';
 import AppFormPicker from '../components/AppFormPicker';
 import AppTextInput from '../components/AppTextInput';
+import CategoryPickerItem from '../components/CategoryPickerItem';
 import ErrorMessage from '../components/ErrorMessage';
 import Screen from '../components/Screen';
 
@@ -18,14 +19,14 @@ const validationSchema = Yup.object().shape({
 });
 
 const categories = [
-    {label: 'Furniture', value: 1},
-    {label: 'Clothing', value: 2},
-    {label: 'Electronics', value: 3},
-    {label: 'Camera', value: 4},
-    {label: 'Tools', value: 5},
+    {label: 'Furniture', value: 1, backgroundColor: 'red', icon:'app'},
+    {label: 'Clothing', value: 2, backgroundColor: 'yellow', icon:'email'},
+    {label: 'Electronics', value: 3, backgroundColor: 'green', icon:'lock'},
+    {label: 'Camera', value: 4, backgroundColor: 'blue', icon:'cart'},
+    {label: 'Tools', value: 5, backgroundColor: 'orange', icon:'open'},
 ];
 
-const ListingEditScreen = (props) => {
+const ListingEditScreen = ({ width, ...props }) => {
     return (
         <Screen style={styles.container}>
 
@@ -57,14 +58,18 @@ const ListingEditScreen = (props) => {
                         keyboardType='numeric'
                         name='price'
                         placeholder='Price'
+                        width={120}
                         />
                    { touched.price && <ErrorMessage error={errors.price} /> } 
 
                     
                     <AppFormPicker 
                         items={categories}
+                        numberOfColumns={3}
                         name='category'
                         placeholder='Category'
+                        PickerItemComponent={CategoryPickerItem}
+                        width='50%'
                      />
                      { touched.category && <ErrorMessage error={errors.category} /> }
 

@@ -37,21 +37,21 @@ export default function App() {
     //  </Screen>
     
 
-    // <ListingsScreen/>
+     //<ListingsScreen/>
     // <AccountScreen/>
 
 
-    // <Screen>
-      //  <ListItem 
-    //   title='My title' 
-    //   // subTitle='My subtitle'
-    //   ImageComponent={<Icon name='email'
-    //   />}
-    //    />
-    // </Screen>
+      //<Screen>
+      // <ListItem 
+      //   title='My title' 
+      //  subTitle='My subtitle'
+      //   ImageComponent={<Icon name='email'
+      //   />}
+      //    />
+      //</Screen>
 
 
-    //  <MessagesScreen/>
+     // <MessagesScreen/>
 
     // <ListingScreen/>
 
