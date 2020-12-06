@@ -8,25 +8,30 @@ import AppFormPicker from '../components/AppFormPicker';
 import AppTextInput from '../components/AppTextInput';
 import CategoryPickerItem from '../components/CategoryPickerItem';
 import ErrorMessage from '../components/ErrorMessage';
+import FormImagePicker from '../components/FormImagePicker';
 import Screen from '../components/Screen';
-
+import useLocation from './hooks/useLocation';
 
 const validationSchema = Yup.object().shape({
     title: Yup.string().required().min(1).label('Title'),
     price: Yup.number().required().min(1).max(10000).label('Price'),
     description: Yup.string().required().label('Description'),
     category: Yup.object().required().nullable().label('Category'),
+    images: Yup.array().min(1, 'Please select atleast one image'),
 });
 
 const categories = [
-    {label: 'Furniture', value: 1, backgroundColor: 'red', icon:'app'},
+    {label: 'Furniture', value: 1, backgroundColor: '#fc5c65', icon:'floor-lamp'},
     {label: 'Clothing', value: 2, backgroundColor: 'yellow', icon:'email'},
-    {label: 'Electronics', value: 3, backgroundColor: 'green', icon:'lock'},
-    {label: 'Camera', value: 4, backgroundColor: 'blue', icon:'cart'},
-    {label: 'Tools', value: 5, backgroundColor: 'orange', icon:'open'},
+    {label: 'Electronics', value: 3, backgroundColor: 'green', icon:'cards'},
+    {label: 'Camera', value: 4, backgroundColor: 'blue', icon:'camera'},
+    {label: 'Cars', value: 5, backgroundColor: 'orange', icon:'car'},
 ];
 
 const ListingEditScreen = ({ width, ...props }) => {
+    
+   const location = useLocation();
+
     return (
         <Screen style={styles.container}>
 
@@ -36,12 +41,14 @@ const ListingEditScreen = ({ width, ...props }) => {
                 price: '', 
                 description: '',
                 category: null, 
+                images: [],
             }}
             onSubmit={(values) => console.log(values)}
             validationSchema={validationSchema}
         >
              {({ handleChange, handleSubmit, errors, setFieldTouched, touched }) => (
                 <>
+                    <FormImagePicker name='images' />
                      <AppTextInput {...props}
                         maxLength={255}
                         onBlur={() => setFieldTouched('title')}
