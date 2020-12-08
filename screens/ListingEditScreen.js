@@ -1,6 +1,6 @@
 import { Formik } from 'formik';
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import * as Yup from 'yup';
 import AppButton from '../components/AppButton';
@@ -26,11 +26,16 @@ const categories = [
     {label: 'Electronics', value: 3, backgroundColor: 'green', icon:'cards'},
     {label: 'Camera', value: 4, backgroundColor: 'blue', icon:'camera'},
     {label: 'Cars', value: 5, backgroundColor: 'orange', icon:'car'},
+    {label: "Clothing", value: 6, backgroundColor: "#2bcbba", icon: "shoe-heel"},
+    {label: "headphones", value: 7, backgroundColor: "#4b7bec", icon: "headphones"},
+    {label: "Books", value: 8, backgroundColor: "#a55eea", icon: "book-open-variant"},
+    {label: "other", value: 9, backgroundColor: "#778ca3", icon: "application"},
+
 ];
 
-const ListingEditScreen = ({ width, ...props }) => {
+const ListingEditScreen = ({ ...props }) => {
     
-   const location = useLocation();
+    const location = useLocation();
 
     return (
         <Screen style={styles.container}>
@@ -47,7 +52,8 @@ const ListingEditScreen = ({ width, ...props }) => {
             validationSchema={validationSchema}
         >
              {({ handleChange, handleSubmit, errors, setFieldTouched, touched }) => (
-                <>
+                  
+                <>                
                     <FormImagePicker name='images' />
                      <AppTextInput {...props}
                         maxLength={255}
@@ -90,10 +96,9 @@ const ListingEditScreen = ({ width, ...props }) => {
                         placeholder='Description'
                    />
                     { touched.description && <ErrorMessage error={errors.description} /> }
-
                     <AppButton title='Post' onPress={handleSubmit} />
-                </>
-                )}
+                </>                
+                )}                   
 
         </Formik>
         </Screen>
@@ -101,9 +106,9 @@ const ListingEditScreen = ({ width, ...props }) => {
 }
 
 const styles = StyleSheet.create({
-    container: {
-         padding: 10,
-    }
+    // view__container: {
+    //      padding: 10,
+    // }
 });
 
 export default ListingEditScreen;

@@ -8,10 +8,13 @@ const ImageInputList = ({ imageUris = [], onRemoveImage, onAddImage }) => {
 
 
     return (
+        <View style={styles.view__container}>
         <ScrollView 
         ref={scrollView} 
         horizontal 
-        onContentSizeChange={() => scrollView.current.scrollToEnd()} >
+        onContentSizeChange={() => scrollView.current.scrollToEnd()} 
+        >
+
         <View style={styles.container}>
             {imageUris.map((uri) => (
             <View key={uri} style={styles.image}>
@@ -24,6 +27,7 @@ const ImageInputList = ({ imageUris = [], onRemoveImage, onAddImage }) => {
             <ImageInput onChangeImage={uri => onAddImage(uri)} />
         </View>
         </ScrollView>
+        </View>
     );
 }
 
@@ -34,7 +38,7 @@ const styles = StyleSheet.create({
 
     image: {
         marginRight: 10,
-    }
+    },
 })
 
 export default ImageInputList

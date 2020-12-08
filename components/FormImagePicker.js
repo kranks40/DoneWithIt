@@ -4,7 +4,7 @@ import ErrorMessage from './ErrorMessage'
 import ImageInputList from './ImageInputList'
 
 
-const FormImagePicker = ({ name }) => {
+const FormImagePicker = ({ name, width, ...props }) => {
     const { errors, setFieldValue, touched, values } = useFormikContext();
 
     const handleAdd = (uri) => {
@@ -21,7 +21,7 @@ const FormImagePicker = ({ name }) => {
        imageUris={values[name]}
        onAddImage={handleAdd}
        onRemoveImage={handleRemove} />
-       { touched.values && <ErrorMessage error={errors.values} /> }
+       { touched.name && <ErrorMessage error={errors.name} /> }
        </>
     )
 }
