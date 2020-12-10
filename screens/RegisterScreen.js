@@ -64,7 +64,7 @@ const RegisterScreen = (props) => {
                         textContentType='password'
                     />
                     { touched.password && <ErrorMessage error={errors.password} /> } 
-                    <AppButton title='Register' onPress={handleSubmit} />
+                    <AppButton title='Register' />
                 </>
                 )}
 

@@ -50,7 +50,7 @@ const LoginScreen = (props) => {
                         textContentType='password'
                     />
                     { touched.password && <ErrorMessage error={errors.password} /> } 
-                    <AppButton title='Login' onPress={handleSubmit} />
+                    <AppButton title='Login' />
                 </>
                 )}
 

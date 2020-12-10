@@ -1,13 +1,16 @@
-import React from 'react'
-import { View, ImageBackground, StyleSheet, Button, Image, Text  } from 'react-native'
-import AppButton from '../components/AppButton'
+import React from 'react';
+import { View, ImageBackground, StyleSheet, Image, Text  } from 'react-native';
+import AppButton from '../components/AppButton';
+import LoginScreen from './LoginScreen';
+import RegisterScreen from './RegisterScreen';
 
-export default function WelcomeScreen() {
+
+export default function WelcomeScreen({ navigation }) {
     return (         
         
     <ImageBackground
         blurRadius={5}
-        style={styles.backgound}
+        style={styles.background}
         source={require('../assets/background.jpg')}>
 
         <View style={styles.logo__container}>        
@@ -19,8 +22,14 @@ export default function WelcomeScreen() {
         </View>       
 
         <View style={styles.buttonContainer}>
-           <AppButton title='Login' />
-           <AppButton title='Register' color='secondary' />
+           <AppButton 
+                title='Login' 
+                onPress={() => navigation.navigate('login')} />
+                
+           <AppButton 
+                title='Register' 
+                color='secondary' 
+                onPress={() => navigation.navigate('register')} />
         </View>
         
     </ImageBackground>
@@ -30,7 +39,7 @@ export default function WelcomeScreen() {
 }
 
 const styles = StyleSheet.create({
-    backgound: {
+    background: {
         flex: 1,
         justifyContent: "flex-end",
         alignItems: "center",

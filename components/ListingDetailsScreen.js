@@ -4,28 +4,26 @@ import colors from '../config/colors';
 import ListItem from './ListItem';
 import AppText from './AppText';
 
-export default function ListingScreen() {
+export default function ListingDetailsScreen({ route}) {
+    const listing = route.params;
+
     return (
         <View>
-            <Image style={styles.image}
-            source={require('../assets/jacket.jpg')}/>
-
-            <View style={styles.details}>
-                <AppText style={styles.title}>Red jacket for sale</AppText>
-                <AppText style={styles.price}>$100</AppText>
-
-                <View style={styles.UserItemContainer}>
-                    <ListItem
-                    image={require('../assets/mosh.jpg')} 
-                    title='Oketo Peters'
-                    subTitle='5 Listings'
-                    />
-                </View>
-            </View>
+      <Image style={styles.image} source={listing.image} />
+      <View style={styles.detailsContainer}>
+        <Text style={styles.title}>{listing.title}</Text>
+        <Text style={styles.price}>${listing.price}</Text>
+        <View style={styles.userContainer}>
+          <ListItem
+            image={require("../assets/mosh.jpg")}
+            title="Mosh Hamedani"
+            subTitle="5 Listings"
+          />
         </View>
-    )
+      </View>
+    </View>
+  );
 }
-
 const styles = StyleSheet.create({
     image: {
         width: '100%',
