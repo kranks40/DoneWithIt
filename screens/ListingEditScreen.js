@@ -38,32 +38,32 @@ const categories = [
 const ListingEditScreen = () => {
         
     const location = useLocation();
-    // const [uploadVisible, setUploadVisible] = useState(false);
-    // const [ progress, setProgress] = useState(0)
+    const [uploadVisible, setUploadVisible] = useState(false);
+    const [ progress, setProgress] = useState(0)
 
 
-    // const handleSubmit = async (listing, { resetForm }) => {
-    //     setProgress(0);
-    //     setUploadVisible(true);
-    //     const result = await listingApi.addListing(
-    //         { ...listing, location },
-    //         (progress) => setProgress(progress)
-    //         );
-            
-    //     if (!result.ok) {
-    //         setUploadVisible(false);
-    //         return alert('Could not save the listing');
-    //     }
-    //        resetForm();
-    // };
+     const handleSubmit = async (listing, { resetForm }) => {
+         setProgress(0);
+         setUploadVisible(true);
+         const result = await listingApi.addListing(
+             { ...listing, location },
+             (progress) => setProgress(progress)
+             );
+
+         if (!result.ok) {
+            setUploadVisible(false); 
+             return alert('Could not save the listing');
+         }
+            resetForm();
+     };
 
     return (
         <Screen style={styles.container}>
-            {/* <UploadScreen 
+            <UploadScreen 
             onDone={() => setUploadVisible(false)} 
             progress={progress} 
             visible={uploadVisible} 
-            /> */}
+            />
         <Form
             initialValues={{ 
                 title: '', 
@@ -72,7 +72,7 @@ const ListingEditScreen = () => {
                 category: null, 
                 images: [],
             }}
-            onSubmit={(values) => console.log(location)}
+            onSubmit={handleSubmit}
             validationSchema={validationSchema}
         >                  
                         

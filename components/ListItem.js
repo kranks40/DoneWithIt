@@ -5,32 +5,34 @@ import AppText from './AppText';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-export default function ListItem({ title, image, subTitle, onPress, renderRightActions, IconComponent}) {
+ const ListItem = ({ title, image, subTitle, onPress, renderRightActions, IconComponent}) => {
     return (
-        <Swipeable renderRightActions={renderRightActions}>
-
+    <Swipeable renderRightActions={renderRightActions}>
         <TouchableHighlight underlayColor={colors.light} onPress={onPress}>
-            
-
-        <View style={styles.container}>
-             {IconComponent}
-        
+            <View style={styles.container}>
+            {IconComponent}
             {image && <Image style={styles.image} source={image} />}
-           
-               
-            <View style={styles.detailContainer}>
-                <AppText style={styles.title} numberOfLines={1}>{title}</AppText>
-               { subTitle && <AppText style={styles.subTitle} numberOfLines={2}>{subTitle}</AppText>}
+            <View style={styles.detailsContainer}>
+                <AppText style={styles.title} numberOfLines={1}>
+                {title}
+                </AppText>
+                {subTitle && (
+                <AppText style={styles.subTitle} numberOfLines={2}>
+                    {subTitle}
+                </AppText>
+                )}
             </View>
 
-            <MaterialCommunityIcons name='chevron-right' size={25} />
-            
-        </View>
-
+            <MaterialCommunityIcons
+                color={colors.medium}
+                name="chevron-right"
+                size={25}
+                style={styles.arrow}
+            />
+            </View>
         </TouchableHighlight>
-
-        </Swipeable>
-
+    </Swipeable>
+  
     );
 }
 
@@ -46,15 +48,15 @@ const styles = StyleSheet.create({
         width: 70,
         height: 70,
         borderRadius: 35,
-        marginRight: 10,
+
     },
 
     title: {
         fontWeight: '500',
-        fontSize: 24,
+        // fontSize: 24,
     },
 
-    price: {
+    subTitle: {
         color: colors.medium,
     },
 
@@ -62,8 +64,14 @@ const styles = StyleSheet.create({
         flex: 1,
         marginLeft: 10,
         justifyContent: "center"
+    },
+
+    arrow: {
+       paddingHorizontal: 100,
     }
 
 
 
 })
+
+export default ListItem;

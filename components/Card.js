@@ -1,10 +1,10 @@
 import React from 'react'
-import { Image, StyleSheet, View } from 'react-native'
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
+import { Image, StyleSheet, TouchableWithoutFeedback, View } from 'react-native'
+
 import colors from '../config/colors'
 import AppText from './AppText'
 
-export default function Card({ title, subTitle, imageUrl, onPress}) {
+ const Card = ({ title, subTitle, imageUrl, onPress}) => {
     return (
         <TouchableWithoutFeedback onPress={onPress}>
         <View style={styles.card}>
@@ -46,3 +46,5 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
     },
 })
+
+export default Card;

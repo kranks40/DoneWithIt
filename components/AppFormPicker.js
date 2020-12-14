@@ -25,7 +25,7 @@ const AppFormPicker = ({
             selectedItem={values[name]}
         />
 
-{ touched.name && <ErrorMessage error={errors.name} /> }
+        <ErrorMessage error={errors[name]} visible={touched[name]} />
             
         </>
     );

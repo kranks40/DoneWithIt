@@ -9,6 +9,7 @@ import ListingEditScreen from "../screens/ListingEditScreen";
 import NewListingButton from "../navigation/NewsListingButton";
 import routes from "./routes";
 
+
 const Tab = createBottomTabNavigator();
 
 const AppNavigator = () => (
@@ -25,10 +26,10 @@ const AppNavigator = () => (
     <Tab.Screen
       name="ListingEdit"
       component={ListingEditScreen}
-      options={({ navigation }) => ({
+      options={({navigation }) => ({
         tabBarButton: () => (
           <NewListingButton
-            onPress={() => navigation.navigate(routes.LISTING_EDIT)}
+            onPress={() => navigation.navigate(routes.LISTING_DETAILS)}
           />
         ),
         tabBarIcon: ({ color, size }) => (

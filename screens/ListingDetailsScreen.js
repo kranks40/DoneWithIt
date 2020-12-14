@@ -1,9 +1,9 @@
 import React from 'react'
 import { Image, StyleSheet, View } from 'react-native'
+import ListItem from '../components/ListItem';
 import colors from '../config/colors';
-import ListItem from './ListItem';
 
-import AppText from './AppText';
+import AppText from '../components/AppText';
 
 
 const ListingDetailsScreen = ({ route }) => {
@@ -31,20 +31,24 @@ const styles = StyleSheet.create({
   detailsContainer: {
     padding: 20,
   },
+
   image: {
     width: "100%",
     height: 300,
   },
+
   price: {
     color: colors.secondary,
     fontWeight: "bold",
     fontSize: 20,
     marginVertical: 10,
   },
+
   title: {
     fontSize: 24,
     fontWeight: "500",
   },
+  
   userContainer: {
     marginVertical: 40,
   },
