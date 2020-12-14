@@ -26,17 +26,17 @@ const menuItems = [
       name: "email",
       backgroundColor: colors.secondary,
     },
-    targetScreen: routes.MESSAGE
+    targetScreen: routes.MESSAGES,
   },
 ];
 
-const AccountScreen = ({ navigation })  => {
+const AccountScreen = ({ navigation }) => {
   return (
     <Screen style={styles.screen}>
       <View style={styles.container}>
         <ListItem
-          title="Oketo Peters"
-          subTitle="eng_peters20@yahoo.com"
+          title="Mosh Hamedani"
+          subTitle="programmingwithmosh@gmail.com"
           image={require("../assets/mosh.jpg")}
         />
       </View>

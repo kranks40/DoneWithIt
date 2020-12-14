@@ -31,135 +31,136 @@ import NavigationTheme from './navigation/NavigationTheme';
 import AppNavigator from './navigation/AppNavigator';
 
         
-const Tweets = ({ navigation}) => (
-  <Screen>
-    <Text>Tweets</Text>
-    <Button title='View Tweet'
-    onPress={() => navigation.navigate('TweetDetails')}
-    />
-  </Screen>
-);
+// const Tweets = ({ navigation}) => (
+//   <Screen>
+//     <Text>Tweets</Text>
+//     <Button title='View Tweet'
+//     onPress={() => navigation.navigate('TweetDetails')}
+//     />
+//   </Screen>
+// );
 
-const TweetDetails = () => (
-<Screen>
-  <Text>Tweet Details</Text>
-</Screen>
+// const TweetDetails = () => (
+// <Screen>
+//   <Text>Tweet Details</Text>
+// </Screen>
 
-);
+// );
 
 
-const Stack = createStackNavigator();
-const StackNavigator = () => (
-  <Stack.Navigator>
-    <Stack.Screen name='Tweets' component={Tweets} />
-    <Stack.Screen name='TweetDetails' component={TweetDetails} />
-  </Stack.Navigator>
-);
+// const Stack = createStackNavigator();
+// const StackNavigator = () => (
+//   <Stack.Navigator>
+//     <Stack.Screen name='Tweets' component={Tweets} />
+//     <Stack.Screen name='TweetDetails' component={TweetDetails} />
+//   </Stack.Navigator>
+// );
 
-const Account = () => (
-  <Screen>
-    <Text>Account</Text>
-  </Screen>
-);
+// const Account = () => (
+//   <Screen>
+//     <Text>Account</Text>
+//   </Screen>
+// );
 
-const Settings = () => (
-  <Screen>
-    <Text>Settings</Text>
-  </Screen>
-)
-const Favorite = () => (
-  <Screen>
-    <Text>Favorite</Text>
-  </Screen>
-)
-const Junk = () => (
-  <Screen>
-    <Text>Junk</Text>
-  </Screen>
-)
-const News = () => (
-  <Screen>
-    <Text>News</Text>
-  </Screen>
-)
+// const Settings = () => (
+//   <Screen>
+//     <Text>Settings</Text>
+//   </Screen>
+// )
+// const Favorite = () => (
+//   <Screen>
+//     <Text>Favorite</Text>
+//   </Screen>
+// )
+// const Junk = () => (
+//   <Screen>
+//     <Text>Junk</Text>
+//   </Screen>
+// )
+// const News = () => (
+//   <Screen>
+//     <Text>News</Text>
+//   </Screen>
+// )
 
-const Tab = createBottomTabNavigator();
-const TabNavigator = () => (
+// const Tab = createBottomTabNavigator();
+// const TabNavigator = () => (
   
-  <Tab.Navigator
-  tabBarOptions={{
-    activeBackgroundColor: 'tomato',
-    activeTintColor: 'white',
-    inactiveBackgroundColor: '#eee',
-    inactiveTintColor: 'black',
-  }}
-  >
-    <Tab.Screen 
-    name='Feed' 
-    component={Tweets}
-    options={{
-      tabBarIcon: ({ size, color }) => 
-      <MaterialCommunityIcons name= 'home' size={size} color={color} />
-    }}
-     />
-    <Tab.Screen 
-    name='Account' 
-    component={Account} 
-    options={{
-      tabBarIcon: ({ size, color }) => 
-      <MaterialCommunityIcons name= 'account-multiple-plus' size={size} color={color} />
-    }}
-    />
-    <Tab.Screen
-     name='Settings' 
-     component={Settings} 
-     options={{
-      tabBarIcon: ({ size, color }) => 
-      <MaterialCommunityIcons name= 'settings' size={size} color={color} />
-    }}
-    />
-    <Tab.Screen 
-    name='Favorite' 
-    component={Favorite} 
-    options={{
-      tabBarIcon: ({ size, color }) => 
-      <MaterialCommunityIcons name= 'star' size={size} color={color} />
-    }}
-    />
-    <Tab.Screen 
-    name='Junk' 
-    component={Junk} 
-    options={{
-      tabBarIcon: ({ size, color }) => 
-      <MaterialCommunityIcons name= 'delete' size={size} color={color} />
-    }}
-    />
-    <Tab.Screen 
-    name='News' 
-    component={News}
-    options={{
-      tabBarIcon: ({ size, color }) => 
-      <MaterialCommunityIcons name= 'email-newsletter' size={size} color={color} />
-    }}
-     />
-  </Tab.Navigator>
-);
+//   <Tab.Navigator
+//   tabBarOptions={{
+//     activeBackgroundColor: 'tomato',
+//     activeTintColor: 'white',
+//     inactiveBackgroundColor: '#eee',
+//     inactiveTintColor: 'black',
+//   }}
+//   >
+//     <Tab.Screen 
+//     name='Feed' 
+//     component={Tweets}
+//     options={{
+//       tabBarIcon: ({ size, color }) => 
+//       <MaterialCommunityIcons name= 'home' size={size} color={color} />
+//     }}
+//      />
+//     <Tab.Screen 
+//     name='Account' 
+//     component={Account} 
+//     options={{
+//       tabBarIcon: ({ size, color }) => 
+//       <MaterialCommunityIcons name= 'account-multiple-plus' size={size} color={color} />
+//     }}
+//     />
+//     <Tab.Screen
+//      name='Settings' 
+//      component={Settings} 
+//      options={{
+//       tabBarIcon: ({ size, color }) => 
+//       <MaterialCommunityIcons name= 'settings' size={size} color={color} />
+//     }}
+//     />
+//     <Tab.Screen 
+//     name='Favorite' 
+//     component={Favorite} 
+//     options={{
+//       tabBarIcon: ({ size, color }) => 
+//       <MaterialCommunityIcons name= 'star' size={size} color={color} />
+//     }}
+//     />
+//     <Tab.Screen 
+//     name='Junk' 
+//     component={Junk} 
+//     options={{
+//       tabBarIcon: ({ size, color }) => 
+//       <MaterialCommunityIcons name= 'delete' size={size} color={color} />
+//     }}
+//     />
+//     <Tab.Screen 
+//     name='News' 
+//     component={News}
+//     options={{
+//       tabBarIcon: ({ size, color }) => 
+//       <MaterialCommunityIcons name= 'email-newsletter' size={size} color={color} />
+//     }}
+//      />
+//   </Tab.Navigator>
+// );
 
 export default function App() { 
 
   
   return (
-    <NavigationContainer theme={NavigationTheme}>
-      <AppNavigator/>
+       <NavigationContainer theme={NavigationTheme}>
+          <AppNavigator/>
 
-      {/* <AuthNavigation/> */}
-    </NavigationContainer>
-    // <Screen>
-    //   <ImageInputList 
-    //   imageUris={imageUris} 
-    //   onAddImage={handleAdd}
-    //   onRemoveImage={handleRemove}
-    //   />
+           {/* <AuthNavigation/> */}
+         </NavigationContainer>
+
+    //  <Screen>
+    //    <ImageInputList 
+    //       imageUris={imageUris} 
+    //       onAddImage={handleAdd}
+    //       onRemoveImage={handleRemove}
+    //    />
     // </Screen>
     
 

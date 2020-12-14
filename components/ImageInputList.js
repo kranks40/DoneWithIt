@@ -3,12 +3,10 @@ import { View, StyleSheet, ScrollView } from 'react-native'
 import ImageInput from '../screens/ImageInput'
 
 const ImageInputList = ({ imageUris = [], onRemoveImage, onAddImage }) => {
-    const scrollView = useRef();
-    
-
+    const scrollView = useRef();   
 
     return (
-        <View style={styles.view__container}>
+        <View>
         <ScrollView 
         ref={scrollView} 
         horizontal 

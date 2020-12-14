@@ -1,16 +1,18 @@
 import { Formik } from 'formik';
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet } from 'react-native';
 
 import * as Yup from 'yup';
-import AppButton from '../components/AppButton';
 import AppFormPicker from '../components/AppFormPicker';
-import AppTextInput from '../components/AppTextInput';
 import CategoryPickerItem from '../components/CategoryPickerItem';
-import ErrorMessage from '../components/ErrorMessage';
 import FormImagePicker from '../components/FormImagePicker';
 import Screen from '../components/Screen';
-import useLocation from './hooks/useLocation';
+import listingApi from '../api/listings';
+import useLocation from '../hooks/useLocation';
+import SubmitButton from '../components/SubmitButton';
+import UploadScreen from './UploadScreen';
+import FormField from '../components/FormField';
+import Form from '../components/Form';
 
 const validationSchema = Yup.object().shape({
     title: Yup.string().required().min(1).label('Title'),
@@ -33,14 +35,36 @@ const categories = [
 
 ];
 
-const ListingEditScreen = ({ ...props }) => {
-    
+const ListingEditScreen = () => {
+        
     const location = useLocation();
+    // const [uploadVisible, setUploadVisible] = useState(false);
+    // const [ progress, setProgress] = useState(0)
+
+
+    // const handleSubmit = async (listing, { resetForm }) => {
+    //     setProgress(0);
+    //     setUploadVisible(true);
+    //     const result = await listingApi.addListing(
+    //         { ...listing, location },
+    //         (progress) => setProgress(progress)
+    //         );
+            
+    //     if (!result.ok) {
+    //         setUploadVisible(false);
+    //         return alert('Could not save the listing');
+    //     }
+    //        resetForm();
+    // };
 
     return (
         <Screen style={styles.container}>
-
-        <Formik
+            {/* <UploadScreen 
+            onDone={() => setUploadVisible(false)} 
+            progress={progress} 
+            visible={uploadVisible} 
+            /> */}
+        <Form
             initialValues={{ 
                 title: '', 
                 price: '', 
@@ -48,67 +72,52 @@ const ListingEditScreen = ({ ...props }) => {
                 category: null, 
                 images: [],
             }}
-            onSubmit={(values) => console.log(values)}
+            onSubmit={(values) => console.log(location)}
             validationSchema={validationSchema}
-        >
-             {({ handleChange, handleSubmit, errors, setFieldTouched, touched }) => (
-                  
-                <>                
-                    <FormImagePicker name='images' />
-                     <AppTextInput {...props}
-                        maxLength={255}
-                        onBlur={() => setFieldTouched('title')}
-                        onChangeText={handleChange('title')}
-                        name='title'
-                        placeholder='Title'
-                   />
-                   { touched.title && <ErrorMessage error={errors.title} /> } 
+        >                  
+                        
+            <FormImagePicker name='images' />
+                <FormField
+                    maxLength={255}
+                    name='title'
+                    placeholder='Title'
+                />
 
-                   <AppTextInput {...props}
-                        maxLength={8}
-                        onBlur={() => setFieldTouched('price')}
-                        onChangeText={handleChange('price')}
-                        keyboardType='numeric'
-                        name='price'
-                        placeholder='Price'
-                        width={120}
-                        />
-                   { touched.price && <ErrorMessage error={errors.price} /> } 
+            <FormField
+                keyboardType='numeric'
+                maxLength={8}
+                name='price'
+                placeholder='Price'
+                width={120}
+                />
+                        
+            <AppFormPicker 
+                items={categories}
+                numberOfColumns={3}
+                name='category'
+                placeholder='Category'
+                PickerItemComponent={CategoryPickerItem}
+                width='50%'
+                />
+                
+            <FormField
+                maxLength={255}
+                multiline
+                numberOfLines={3}
+                name='description'
+                placeholder='Description'
+            />
+            <SubmitButton title='Post' />                                
 
-                    
-                    <AppFormPicker 
-                        items={categories}
-                        numberOfColumns={3}
-                        name='category'
-                        placeholder='Category'
-                        PickerItemComponent={CategoryPickerItem}
-                        width='50%'
-                     />
-                     { touched.category && <ErrorMessage error={errors.category} /> }
-
-                    <AppTextInput {...props}
-                        maxLength={255}
-                        multiline
-                        numberOfLines={3}
-                        onBlur={() => setFieldTouched('description')}
-                        onChangeText={handleChange('description')}
-                        name='description'
-                        placeholder='Description'
-                   />
-                    { touched.description && <ErrorMessage error={errors.description} /> }
-                    <AppButton title='Post' onPress={handleSubmit} />
-                </>                
-                )}                   
-
-        </Formik>
+        </Form>
         </Screen>
-    );
+);
 }
 
 const styles = StyleSheet.create({
-    // view__container: {
-    //      padding: 10,
-    // }
+     view__container: {
+        padding: 10,
+     }
 });
 
 export default ListingEditScreen;

@@ -5,7 +5,9 @@ import Screen from '../components/Screen';
 import * as Yup from 'yup';
 import AppTextInput from '../components/AppTextInput';
 import ErrorMessage from '../components/ErrorMessage';
-import AppButton from '../components/AppButton';
+
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import SubmitButton from '../components/SubmitButton';
 
 const validationSchema = Yup.object().shape({
     name: Yup.string().required().label('name'),
@@ -25,12 +27,12 @@ const RegisterScreen = (props) => {
         onSubmit={values => console.log(values)}
          validationSchema={validationSchema}
         >
-             {({ handleChange, handleSubmit, errors, setFieldTouched, touched }) => (
+             {({ handleChange, errors, setFieldTouched, touched }) => (
                 <>
                      <AppTextInput {...props}
                         autoCapitalize='none'
                         autoCorrect={false}
-                        icon='person'
+                        icon='account'
                         onBlur={() => setFieldTouched('name')}
                         onChangeText={handleChange('name')}
                         keyboardType='email-address'
@@ -64,7 +66,7 @@ const RegisterScreen = (props) => {
                         textContentType='password'
                     />
                     { touched.password && <ErrorMessage error={errors.password} /> } 
-                    <AppButton title='Register' />
+                    <SubmitButton title='Register' />
                 </>
                 )}
 

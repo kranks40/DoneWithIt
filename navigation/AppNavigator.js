@@ -6,7 +6,6 @@ import AccountNavigator from "./AccountNavigator";
 import FeedNavigator from "./FeedNavigator";
 import ListingEditScreen from "../screens/ListingEditScreen";
 
-// import routes from "./routes";
 import NewListingButton from "../navigation/NewsListingButton";
 import routes from "./routes";
 

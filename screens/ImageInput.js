@@ -63,6 +63,8 @@ const ImageInput = ({ imageUri, onChangeImage }) => {
         overflow: "hidden",
         width: 100,
       },
+
+      
       image: {
         height: "100%",
         width: "100%",
