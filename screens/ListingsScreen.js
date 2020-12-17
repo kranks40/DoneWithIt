@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 
 import ActivityIndicator from '../components/ActivityIndicator';
@@ -14,19 +14,19 @@ import AppButton from '../components/AppButton';
 
 const ListingsScreen = ({ navigation }) => {
  
-    const getListingsApi = useApi(listingsApi.getListings);
+  const getListingsApi = useApi(listingsApi.getListings);
 
-   useEffect(() => {
-     getListingsApi.request(1,2,3);
-   }, []);
+  useEffect(() => {
+    getListingsApi.request();
+  }, []);
 
-   
   return (
     <Screen style={styles.screen}>
       {getListingsApi.error && (
         <>
-        <AppText>Couldn't retrieve the listings.</AppText>
-        <AppButton title='Retry' onPress={loadListings} />
+          <AppText>Couldn't retrieve the listings.</AppText>
+          <AppButton title="Retry" onPress={getListingsApi.request} />
+          
         </>
       )}
       <ActivityIndicator visible={getListingsApi.loading} />
@@ -39,13 +39,13 @@ const ListingsScreen = ({ navigation }) => {
             subTitle={"$" + item.price}
             imageUrl={item.images[0].url}
             onPress={() => navigation.navigate(routes.LISTING_DETAILS, item)}
+            thumbnailUrl={item.images[0].thumbnailUrl}
           />
         )}
       />
     </Screen>
   );
 }
-
 
 const styles = StyleSheet.create({
   screen: {
@@ -55,3 +55,4 @@ const styles = StyleSheet.create({
 });
 
 export default ListingsScreen;
+
