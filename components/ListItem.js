@@ -27,7 +27,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
                 color={colors.medium}
                 name="chevron-right"
                 size={25}
-                style={styles.arrow}
+                // style={styles.arrow}
             />
             </View>
         </TouchableHighlight>
@@ -53,22 +53,21 @@ const styles = StyleSheet.create({
 
     title: {
         fontWeight: '500',
-        // fontSize: 24,
     },
 
     subTitle: {
         color: colors.medium,
     },
 
-    detailContainer: {
+    detailsContainer: {
         flex: 1,
         marginLeft: 10,
         justifyContent: "center"
     },
 
-    arrow: {
-       paddingHorizontal: 100,
-    }
+    // arrow: {
+    //    paddingHorizontal: 100,
+    // }
 
 
 

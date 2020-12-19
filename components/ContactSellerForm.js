@@ -4,7 +4,7 @@ import { Notifications } from "expo";
 import * as Yup from "yup";
 
 
-import messagesApi from "../api/messages";
+import messagesApi from "../api/message";
 import SubmitButton from "./SubmitButton";
 
 const ContactSellerForm = ({ listing }) => {
