@@ -21,6 +21,8 @@ const ListingsScreen = ({ navigation }) => {
   }, []);
 
   return (
+    <>
+    <ActivityIndicator visible={getListingsApi.loading} />
     <Screen style={styles.screen}>
       {getListingsApi.error && (
         <>
@@ -29,7 +31,6 @@ const ListingsScreen = ({ navigation }) => {
           
         </>
       )}
-      <ActivityIndicator visible={getListingsApi.loading} />
       <FlatList
         data={getListingsApi.data}
         keyExtractor={(listing) => listing.id.toString()}
@@ -44,6 +45,7 @@ const ListingsScreen = ({ navigation }) => {
         )}
       />
     </Screen>
+    </>
   );
 }
 

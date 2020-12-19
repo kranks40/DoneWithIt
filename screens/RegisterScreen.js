@@ -1,77 +1,94 @@
-import { Formik } from 'formik';
-import React from 'react'
+
+import React, { useState } from 'react'
 import { Image, StyleSheet } from 'react-native'
 import Screen from '../components/Screen';
 import * as Yup from 'yup';
-import AppTextInput from '../components/AppTextInput';
-import ErrorMessage from '../components/ErrorMessage';
 
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import SubmitButton from '../components/SubmitButton';
+import FormField from '../components/FormField';
+import Form from '../components/Form';
+import useAuth from '../auth/useAuth';
+import ActivityIndicator from '../components/ActivityIndicator';
+import usersApi from '../api/users';
+import authApi from '../api/auth';
+
 
 const validationSchema = Yup.object().shape({
     name: Yup.string().required().label('name'),
     email: Yup.string().required().email().label('Email'),
-    password: Yup.string().required().min(6).label('password'),
+    password: Yup.string().required().min(4).label('password'),
 });
 
-const RegisterScreen = (props) => {
+const RegisterScreen = () => {
+    const registerApi = useApi(usersApi.register);
+    const loginApi = useApi(authApi.login);
+    const [ error, setError ] = useState();
+    const auth = useAuth();
+
+    const handleSubmit = async (userInfo) => {
+        const result = await registerApi.request(userInfo);
+
+        if (!result.ok) {
+            if (result.data) setError(result.data.error);
+            else {
+                setError('An unexpected error occurred.');
+            }
+            return;
+        }
+
+        const { data: authToken } = await loginApi.request(
+            userInfo.email,
+            userInfo.password
+        );
+        auth.logIn(authToken);
+    };
+
+
     return (
+        <>
+        <ActivityIndicator  visible={ registerApi.loading || loginApi.loading }/>
         <Screen style={styles.register__screen}>
-        <Image 
-        style={styles.register__image}
-        source={require('../assets/logo-red.png')} />
-
-        <Formik
+        
+        <Form
         initialValues={{ name: '', email: '', password: ''}}
-        onSubmit={values => console.log(values)}
-         validationSchema={validationSchema}
+        onSubmit={handleSubmit}
+        validationSchema={validationSchema}
         >
-             {({ handleChange, errors, setFieldTouched, touched }) => (
-                <>
-                     <AppTextInput {...props}
-                        autoCapitalize='none'
-                        autoCorrect={false}
-                        icon='account'
-                        onBlur={() => setFieldTouched('name')}
-                        onChangeText={handleChange('name')}
-                        keyboardType='email-address'
-                        name='name'
-                        placeholder='Name'
-                        textContentType='emailAddress'
-                   />
-                   { touched.name && <ErrorMessage error={errors.name} /> } 
+            
+        <FormField
+            autoCapitalize='none'
+            autoCorrect={false}
+            icon='account'
+            keyboardType='email-address'
+            name='name'
+            placeholder='Name'
+            textContentType='emailAddress'
+    />
 
-                   <AppTextInput {...props}
-                        autoCapitalize='none'
-                        autoCorrect={false}
-                        icon='email'
-                        onBlur={() => setFieldTouched('email')}
-                        onChangeText={handleChange('email')}
-                        keyboardType='email-address'
-                        name='email'
-                        placeholder='Email'
-                        textContentType='emailAddress'
-                   />
-                   { touched.email && <ErrorMessage error={errors.email} /> } 
-                    <AppTextInput {...props}
-                        autoCapitalize='none'
-                        autoCorrect={false}
-                        icon='lock'
-                        onBlur={() => setFieldTouched('password')}
-                        onChangeText={handleChange('password')}
-                        name='password'
-                        placeholder='Password'
-                        secureTextEntry
-                        textContentType='password'
-                    />
-                    { touched.password && <ErrorMessage error={errors.password} /> } 
-                    <SubmitButton title='Register' />
-                </>
-                )}
-
-        </Formik>
-        </Screen>
+    <FormField
+        autoCapitalize='none'
+        autoCorrect={false}
+        icon='email'
+        keyboardType='email-address'
+        name='email'
+        placeholder='Email'
+        textContentType='emailAddress'
+    />
+   
+    <FormField
+        autoCapitalize='none'
+        autoCorrect={false}
+        icon='lock'
+        name='password'
+        placeholder='Password'
+        secureTextEntry
+        textContentType='password'
+    />
+   
+    <SubmitButton title='Register' />
+        </Form>
+     </Screen>
+     </>
     );
 }
 

@@ -1,61 +1,72 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Image } from 'react-native';
 
-import AppTextInput from '../components/AppTextInput';
 import Screen from '../components/Screen';
-import { Formik } from 'formik';
+
 import * as Yup from 'yup';
 import ErrorMessage from '../components/ErrorMessage';
 import SubmitButton from '../components/SubmitButton';
+import authApi from '../api/auth';
+import FormField from '../components/FormField';
+import Form from '../components/Form';
+import useAuth from '../auth/useAuth';
+
 
   const validationSchema = Yup.object().shape({
       email: Yup.string().required().email().label('Email'),
-      password: Yup.string().required().min(6).label('password'),
+      password: Yup.string().required().min(4).label('password'),
   });
 
-const LoginScreen = (props) => {   
+const LoginScreen = (props) => {  
+    const auth = useAuth()
+    const [loginFailed, setLoginFailed] = useState(false);
+    
+    
+    const handleSubmit = async ({ email, password }) => {
+       const result = await authApi.login(email, password);
+
+       if(!result.ok) return setLoginFailed(true);
+       setLoginFailed(false);
+       auth.logIn(result.data);
+    };
+
     return (
         <Screen style={styles.login__screen}>
             <Image 
             style={styles.login__image}
             source={require('../assets/logo-red.png')} />
 
-            <Formik 
-                initialValues={{ email: '', password: ''}}
-                onSubmit={values => console.log(values)}
-                 validationSchema={validationSchema}
-            >
-                {({ handleChange, errors, setFieldTouched, touched }) => (
-                <>
-                   <AppTextInput {...props}
-                        autoCapitalize='none'
-                        autoCorrect={false}
-                        icon='email'
-                        onBlur={() => setFieldTouched('email')}
-                        onChangeText={handleChange('email')}
-                        keyboardType='email-address'
-                        name='email'
-                        placeholder='Email'
-                        textContentType='emailAddress'
-                   />
-                   { touched.email && <ErrorMessage error={errors.email} /> } 
-                    <AppTextInput {...props}
-                        autoCapitalize='none'
-                        autoCorrect={false}
-                        icon='lock'
-                        onBlur={() => setFieldTouched('password')}
-                        onChangeText={handleChange('password')}
-                        name='password'
-                        placeholder='Password'
-                        secureTextEntry
-                        textContentType='password'
-                    />
-                    { touched.password && <ErrorMessage error={errors.password} /> } 
-                    <SubmitButton title='Login' />
-                </>
-                )}
-
-            </Formik>
+        <Form
+            initialValues={{ email: '', password: ''}}
+            onSubmit={ handleSubmit }
+            validationSchema={validationSchema}
+        >
+            <ErrorMessage 
+            error='Invalid email and/or password.' 
+            visible={loginFailed}
+            />
+            
+        <FormField
+            autoCapitalize='none'
+            autoCorrect={false}
+            icon='email'
+            keyboardType='email-address'
+            name='email'
+            placeholder='Email'
+            textContentType='emailAddress'
+        />
+        
+        <FormField
+            autoCapitalize='none'
+            autoCorrect={false}
+            icon='lock'
+            name='password'
+            placeholder='Password'
+            secureTextEntry
+            textContentType='password'
+        />
+                <SubmitButton title='Login' />
+            </Form>
         </Screen>
     );
 }
@@ -74,6 +85,6 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     }
     
-})
+});
 
 export default LoginScreen;

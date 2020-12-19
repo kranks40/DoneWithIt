@@ -23,7 +23,7 @@ export const addListing = ( listing, onUploadProgress ) => {
 
         return client.post(endpoint, data, {
             onUploadProgress: (progress) => 
-            onUploadProgress(progress.load / progress.total),
+            onUploadProgress(progress.loaded / progress.total),
         });
 };
 
