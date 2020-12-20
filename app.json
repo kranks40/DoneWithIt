@@ -2,6 +2,7 @@
   "expo": {
     "name": "DoneWithIt",
     "slug": "DoneWithIt",
+    "platforms": ["ios", "android", "web"],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -17,16 +18,31 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.startapp.donewithit",
+      "buildNumber": "1.0.0"
     },
+    
     "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+      "package": "com.startapp.donewithit"
+    },
+    "description": "A marketplace for selling the stuff you don't want",
+    "notification": {
+      "iosDisplayInForeground": true
+    },
+
+    "extra": {
+      "bugsnag": {
+        "apiKey": "789aec7212c7b5f29ef3ee651e94939f"
       }
     },
-    "web": {
-      "favicon": "./assets/favicon.png"
+    "hooks": {
+      "postPublish": [
+        {
+          "file": "@bugsnag/expo/hooks/post-publish.js",
+          "config": {}
+        }
+      ]
     }
   }
 }

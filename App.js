@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 
 import { NavigationContainer } from '@react-navigation/native';
@@ -12,9 +11,10 @@ import OfflineNotice from './components/OfflineNotice';
 import AuthContext from './auth/context';
 import authStorage from './auth/storage'
 import { navigationRef } from './navigation/rootNavigation';
+import logger from './utility/logger';
 
 
-
+logger.start();
 
         
 export default function App() {
