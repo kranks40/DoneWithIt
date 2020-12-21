@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { FlatList, StyleSheet } from 'react-native';
 
-
 import ListItem from '../components/ListItem';
 import ListItemDeleteAction from '../components/ListItemDeleteAction';
 import ListItemSeparator from '../components/ListItemSeparator';
@@ -10,14 +9,14 @@ import Screen from '../components/Screen';
 const initialMessages = [
     {
         id: 1,
-        title: 'Oketo Peteers',
+        title: 'Oketo Peters',
         description: 'Hey! How are you doing sweet-heart',
         image: require('../assets/mosh.jpg')
     },
 
     {
         id: 2,
-        title: 'Mellia Petrs',
+        title: 'Mellia Peters',
         description: "I'm interested in this item. When will you be able to post it?",
         image: require('../assets/mosh.jpg')
     },

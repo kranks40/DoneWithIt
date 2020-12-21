@@ -1,9 +1,12 @@
+// import Bugsnag from '@bugsnag/expo';
+// Bugsnag.start();
+
+
 import React, { useState } from 'react';
 
 import { NavigationContainer } from '@react-navigation/native';
 import NavigationTheme from "./navigation/NavigationTheme";
 import { Apploading }  from 'expo';
-// import AppLoading from 'expo-app-loading';
 
 import AppNavigator from './navigation/AppNavigator';
 import AuthNavigator from './navigation/AuthNavigation'
@@ -11,10 +14,8 @@ import OfflineNotice from './components/OfflineNotice';
 import AuthContext from './auth/context';
 import authStorage from './auth/storage'
 import { navigationRef } from './navigation/rootNavigation';
-import logger from './utility/logger';
+// import logger from './utility/logger';
 
-
-logger.start();
 
         
 export default function App() {
@@ -26,16 +27,8 @@ export default function App() {
     if (user) setUser(user);
   };
   
-  // if (!isReady) 
-  //   {
-  //     <Apploading
-  //     startAsync={restoreUser} 
-  //     onFinish={() => setIsReady(true)} 
-  //     />
-
-  //   }
-    
-  
+  // if (!isReady)
+  // return <Apploading startAsync={restoreUser} onFinish={() => setIsReady(true)} />
      
 
   return (

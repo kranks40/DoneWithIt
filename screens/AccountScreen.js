@@ -1,16 +1,13 @@
 import React from "react";
 import { StyleSheet, View, FlatList } from "react-native";
 
-
+import useAuth from "../auth/useAuth";
 import colors from "../config/colors";
-
-
-import Screen from "../components/Screen";
+import Icon from "../components/Icon";
 import ListItem from "../components/ListItem";
 import ListItemSeparator from "../components/ListItemSeparator";
-import Icon from "../components/Icon";
 import routes from "../navigation/routes";
-import useAuth from "../auth/useAuth";
+import Screen from "../components/Screen";
 
 
 const menuItems = [
@@ -20,6 +17,7 @@ const menuItems = [
       name: "format-list-bulleted",
       backgroundColor: colors.primary,
     },
+    // targetScreen: routes.Listings,
   },
   {
     title: "My Messages",
@@ -32,7 +30,6 @@ const menuItems = [
 ];
 
 const AccountScreen = ({ navigation }) => {
-
   const { user, logOut } = useAuth();
 
   return (

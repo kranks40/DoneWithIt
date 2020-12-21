@@ -1,3 +1,4 @@
+
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import dayjs from 'dayjs';
 
@@ -46,4 +47,3 @@ const store = async (key, value) => {
     store,
     get,
   };
-  

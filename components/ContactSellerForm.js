@@ -1,11 +1,13 @@
 import React from "react";
 import { Alert, Keyboard } from "react-native";
-import { Notifications } from "expo";
+import * as Notifications from 'expo-notifications'
 import * as Yup from "yup";
 
 
 import messagesApi from "../api/message";
 import SubmitButton from "./SubmitButton";
+import Form from "./Form";
+import FormField from "./FormField";
 
 const ContactSellerForm = ({ listing }) => {
   const handleSubmit = async ({ message }, { resetForm }) => {

@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, ImageBackground, StyleSheet, Image, Text  } from 'react-native';
+import { View, ImageBackground, StyleSheet, Image  } from 'react-native';
 import AppButton from '../components/AppButton';
+import AppText from '../components/AppText';
 import routes from '../navigation/routes';
 
 
@@ -17,8 +18,8 @@ const WelcomeScreen = ({ navigation }) => {
             <Image  style={styles.logo}        
             source={require('../assets/logo-red.png')} />
         
-             <Text
-              style={styles.text}>See what you don't need</Text>
+             <AppText
+              style={styles.text}>See what you don't need</AppText>
         </View>       
 
         <View style={styles.buttonContainer}>

@@ -10,10 +10,10 @@ export default function ViewImageScreen() {
          <View style={styles.container}>
 
             <View style={styles.buttonleft}>
-                <MaterialCommunityIcons name='close' color='black' size={30}/>
+                <MaterialCommunityIcons name='close' color='black' size={35}/>
             </View>
             <View style={styles.buttonright}>
-                <MaterialCommunityIcons name='trash-can-outline' color='black' size={30}/>
+                <MaterialCommunityIcons name='trash-can-outline' color='black' size={35}/>
             </View>
 
             <Image
@@ -47,7 +47,6 @@ const styles = StyleSheet.create({
     },
 
     image: {
-        // resizeMode: "contain",
          width: '100%',
          height: '100%',
     },

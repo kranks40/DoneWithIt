@@ -7,70 +7,56 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 
  const ListItem = ({ title, image, subTitle, onPress, renderRightActions, IconComponent}) => {
     return (
-    <Swipeable renderRightActions={renderRightActions}>
-        <TouchableHighlight underlayColor={colors.light} onPress={onPress}>
+        <Swipeable renderRightActions={renderRightActions}>
+          <TouchableHighlight underlayColor={colors.light} onPress={onPress}>
             <View style={styles.container}>
-            {IconComponent}
-            {image && <Image style={styles.image} source={image} />}
-            <View style={styles.detailsContainer}>
+              {IconComponent}
+              {image && <Image style={styles.image} source={image} />}
+              <View style={styles.detailsContainer}>
                 <AppText style={styles.title} numberOfLines={1}>
-                {title}
+                  {title}
                 </AppText>
                 {subTitle && (
-                <AppText style={styles.subTitle} numberOfLines={2}>
+                  <AppText style={styles.subTitle} numberOfLines={2}>
                     {subTitle}
-                </AppText>
+                  </AppText>
                 )}
-            </View>
-
-            <MaterialCommunityIcons
+              </View>
+              <MaterialCommunityIcons
                 color={colors.medium}
                 name="chevron-right"
                 size={25}
-                // style={styles.arrow}
-            />
+              />
             </View>
-        </TouchableHighlight>
-    </Swipeable>
-  
-    );
-}
-
-const styles = StyleSheet.create({
-    container: {
+          </TouchableHighlight>
+        </Swipeable>
+      );
+    }
+    
+    const styles = StyleSheet.create({
+      container: {
         alignItems: "center",
         flexDirection: "row",
         padding: 15,
-        backgroundColor: colors.white
-    },
-
-    image: {
+        backgroundColor: colors.white,
+      },
+      detailsContainer: {
+        flex: 1,
+        marginLeft: 10,
+        justifyContent: "center",
+      },
+      image: {
         width: 70,
         height: 70,
         borderRadius: 35,
-
-    },
-
-    title: {
-        fontWeight: '500',
-    },
-
-    subTitle: {
+      },
+      subTitle: {
         color: colors.medium,
-    },
-
-    detailsContainer: {
-        flex: 1,
-        marginLeft: 10,
-        justifyContent: "center"
-    },
-
-    // arrow: {
-    //    paddingHorizontal: 100,
-    // }
-
-
-
-})
-
-export default ListItem;
+      },
+      title: {
+        fontWeight: "500",
+      },
+    });
+    
+    export default ListItem;
+    

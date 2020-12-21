@@ -1,18 +1,18 @@
-import { Formik } from 'formik';
-import React, { useEffect, useState } from 'react';
-import { StyleSheet } from 'react-native';
 
+import React, { useState } from 'react';
+import { StyleSheet } from 'react-native';
 import * as Yup from 'yup';
+
 import AppFormPicker from '../components/AppFormPicker';
 import CategoryPickerItem from '../components/CategoryPickerItem';
 import FormImagePicker from '../components/FormImagePicker';
-import Screen from '../components/Screen';
-import listingApi from '../api/listings';
-import useLocation from '../hooks/useLocation';
-import SubmitButton from '../components/SubmitButton';
-import UploadScreen from './UploadScreen';
 import FormField from '../components/FormField';
 import Form from '../components/Form';
+import listingApi from '../api/listings';
+import Screen from '../components/Screen';
+import SubmitButton from '../components/SubmitButton';
+import useLocation from '../hooks/useLocation';
+import UploadScreen from './UploadScreen';
 
 const validationSchema = Yup.object().shape({
     title: Yup.string().required().min(1).label('Title'),
@@ -36,16 +36,14 @@ const categories = [
 ];
 
 const ListingEditScreen = () => {
-        
     const location = useLocation();
     const [uploadVisible, setUploadVisible] = useState(false);
     const [ progress, setProgress] = useState(0)
-
-
-     const handleSubmit = async (listing, { resetForm }) => {
+        
+    const handleSubmit = async (listing, { resetForm }) => {
          setProgress(0);
          setUploadVisible(true);
-         const result = await listingApi.addListing(
+         const result = await listingsApi.addListing(
              { ...listing, location },
              (progress) => setProgress(progress)
              );
